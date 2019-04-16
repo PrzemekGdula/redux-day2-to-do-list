@@ -1,10 +1,15 @@
 import uuidv1 from 'uuid/v1'
 
 const ADD = 'todo/ADD'
+const DELETE = 'todo/DELETE'
 
 export const addActionCreator = (newTaskText) => ({
     type: ADD,
     newTaskText,
+})
+export const deleteActionCreator = (taskKey) => ({
+    type: DELETE,
+    taskKey,
 })
 
 const initialState = {
