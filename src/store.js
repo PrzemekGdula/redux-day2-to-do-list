@@ -2,10 +2,10 @@ import { createStore, combineReducers } from 'redux'
 
 import counter, { incActionCreator } from './state/counter'
 
-
 const rootReducer = combineReducers({
-counter,
+    counter,
 })
+
 
 export const store = createStore(
     rootReducer,
