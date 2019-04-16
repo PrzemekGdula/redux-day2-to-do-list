@@ -23,11 +23,18 @@ export default (state = initialState, action) => {
         case ADD:
             return {
                 ...state,
-tasks: state.tasks.concat({
-    text: action.newTaskText,
-    key: uuidv1(),
-    })
-}
+                tasks: state.tasks.concat({
+                    text: action.newTaskText,
+                    key: uuidv1(),
+                })
+            }
+        case DELETE:
+            return {
+                ...state,
+                tasks: state.tasks.filter((task) => task.key !== action.taskKey)
+
+            }
+
 
         default:
             return state
