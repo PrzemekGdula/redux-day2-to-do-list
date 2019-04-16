@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import {addActionCreator} from './state/toDo'
+import { addActionCreator } from './state/toDo'
 
 class ToDo extends React.Component {
     state = {
@@ -15,22 +15,32 @@ class ToDo extends React.Component {
                         newTaskText: event.target.value,
                     })}
                 />
-            <button
-                onClick={()=> this.props._addTask(this.state.newTaskText)}
-            >
-                DODAJ
+                <button
+                    onClick={() => this.props._addTask(this.state.newTaskText)}
+                >
+                    DODAJ
                 </button>
-            <ul>
-                {
-
-                }
-            </ul>
+                <ul>
+                    {
+                        this.props._tasks.map(
+                            (task, i) => (
+                                <li
+                                    key={task.key}
+                                >
+                                    {task.text}
+                                </li>
+                            )
+                        )
+                    }
+                </ul>
             </div >
         )
     }
 }
 
-const mapStateToProps = state => ({})
+const mapStateToProps = state => ({
+    _tasks: state.toDo.tasks,
+})
 
 const mapDispatchToProps = dispatch => ({
     _addTask: (newTaskText) => dispatch(addActionCreator(newTaskText))
